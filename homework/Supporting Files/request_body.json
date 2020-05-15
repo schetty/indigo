@@ -1,0 +1,11 @@
+
+{
+    "operationName": "Trips",
+    "query": "query Trips($filter: LimitOffsetPaginationInput!) {\n  driver {\n    __typename\n    loads(paginationInput: $filter) {\n      __typename\n      trips {\n        __typename\n        ...TripGQL\n      }\n    }\n  }\n}fragment TripGQL on TruckingTrip {\n  __typename\n  id\n  deliveryStatus\n  progress\n  deliveredAt\n  scheduledDeliveryOn\n  issues {\n    __typename\n    ...IssueGQL\n  }\n  truckingOrder {\n    __typename\n    ...OrderGQL\n  }\n  documents {\n    __typename\n    ...DocumentGQL\n  }\n}fragment IssueGQL on TruckingTripIssue {\n  __typename\n  id\n  status\n  createdAt\n  escalated\n  resolvedBy\n}fragment OrderGQL on TruckingOrder {\n  __typename\n  id\n  tripDistanceMiles\n  orderType\n  locationFrom {\n    __typename\n    ...LocationGQL\n  }\n  locationTo {\n    __typename\n    ...LocationGQL\n  }\n}fragment LocationGQL on TruckingLocation {\n  __typename\n  id\n  phone\n  address {\n    __typename\n    ...AddressGQL\n  }\n  name\n  coordinates {\n    __typename\n    latitude\n    longitude\n  }\n  imageUrl\n  loadingInstructions\n}fragment AddressGQL on Address {\n  __typename\n  street\n  street2\n  city\n  postalCode\n  state\n  country\n}fragment DocumentGQL on TruckingDocument {\n  __typename\n  id\n  createdAt\n  carrierDocName\n  documentTypes\n  url\n  rejectedReason\n}",
+    "variables": {
+        "filter": {
+            "limit": 200,
+            "offset": 0
+        }
+    }
+}
