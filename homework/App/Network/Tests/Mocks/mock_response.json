@@ -1,0 +1,264 @@
+{
+    "data": {
+        "driver": {
+            "__typename": "Driver",
+            "loads": {
+                "__typename": "TruckingTripResponse",
+                "trips": [
+                    {
+                        "__typename": "TruckingTrip",
+                        "id": "qGX7pjTzh",
+                        "deliveryStatus": "CLAIMED",
+                        "progress": "PENDING",
+                        "deliveredAt": null,
+                        "scheduledDeliveryOn": "2020-07-23",
+                        "issues": [],
+                        "truckingOrder": {
+                            "__typename": "TruckingOrder",
+                            "id": "l42NsZtKs_",
+                            "tripDistanceMiles": 20,
+                            "orderType": "CORN",
+                            "locationFrom": {
+                                "__typename": "TruckingLocation",
+                                "id": "lbTfObS8",
+                                "phone": "(555) 555-5555",
+                                "address": {
+                                    "__typename": "Address",
+                                    "street": "20 Inn St.",
+                                    "street2": null,
+                                    "city": "Newburyport",
+                                    "postalCode": "01950",
+                                    "state": "MA",
+                                    "country": "USA"
+                                },
+                                "name": "Test Origin",
+                                "coordinates": {
+                                    "__typename": "GeoPoint",
+                                    "latitude": 42.81104939999999,
+                                    "longitude": -70.87015389999999
+                                },
+                                "imageUrl": null,
+                                "loadingInstructions": ""
+                            },
+                            "locationTo": {
+                                "__typename": "TruckingLocation",
+                                "id": "9pHFugD2p",
+                                "phone": "(555) 555-5555",
+                                "address": {
+                                    "__typename": "Address",
+                                    "street": "500 Rutherford Ave Hood ",
+                                    "street2": null,
+                                    "city": "Charlestown",
+                                    "postalCode": "02129",
+                                    "state": "MA",
+                                    "country": "USA"
+                                },
+                                "name": "Indigo Ag",
+                                "coordinates": {
+                                    "__typename": "GeoPoint",
+                                    "latitude": 42.3809947,
+                                    "longitude": -71.0727119
+                                },
+                                "imageUrl": null,
+                                "loadingInstructions": "CONTACT: Test"
+                            }
+                        },
+                        "documents": []
+                    },
+                    {
+                        "__typename": "TruckingTrip",
+                        "id": "__tVZVLnVM",
+                        "deliveryStatus": "CLAIMED",
+                        "progress": "PENDING",
+                        "deliveredAt": null,
+                        "scheduledDeliveryOn": "2020-07-22",
+                        "issues": [],
+                        "truckingOrder": {
+                            "__typename": "TruckingOrder",
+                            "id": "l42NsZtKs_",
+                            "tripDistanceMiles": 20,
+                            "orderType": "CORN",
+                            "locationFrom": {
+                                "__typename": "TruckingLocation",
+                                "id": "lbTfObS8",
+                                "phone": "(555) 555-5555",
+                                "address": {
+                                    "__typename": "Address",
+                                    "street": "20 Inn St.",
+                                    "street2": null,
+                                    "city": "Newburyport",
+                                    "postalCode": "01950",
+                                    "state": "MA",
+                                    "country": "USA"
+                                },
+                                "name": "Test Origin",
+                                "coordinates": {
+                                    "__typename": "GeoPoint",
+                                    "latitude": 42.81104939999999,
+                                    "longitude": -70.87015389999999
+                                },
+                                "imageUrl": null,
+                                "loadingInstructions": ""
+                            },
+                            "locationTo": {
+                                "__typename": "TruckingLocation",
+                                "id": "9pHFugD2p",
+                                "phone": "(555) 555-5555",
+                                "address": {
+                                    "__typename": "Address",
+                                    "street": "500 Rutherford Ave Hood ",
+                                    "street2": null,
+                                    "city": "Charlestown",
+                                    "postalCode": "02129",
+                                    "state": "MA",
+                                    "country": "USA"
+                                },
+                                "name": "Indigo Ag",
+                                "coordinates": {
+                                    "__typename": "GeoPoint",
+                                    "latitude": 42.3809947,
+                                    "longitude": -71.0727119
+                                },
+                                "imageUrl": null,
+                                "loadingInstructions": "CONTACT: Test"
+                            }
+                        },
+                        "documents": [
+                            {
+                                "__typename": "TruckingDocument",
+                                "id": "6pJoeVNQS",
+                                "createdAt": "2020-04-17T23:21:01.016Z",
+                                "carrierDocName": "driver/16D4A421-D997-41FA-9261-0FBDEE19B5E0.jpeg",
+                                "documentTypes": [
+                                    "BILL_OF_LADING"
+                                ],
+                                "url": "https://indigo-trucking-api-staging-us-east-1.s3.amazonaws.com/driver/16D4A421-D997-41FA-9261-0FBDEE19B5E0.jpeg?AWSAccessKeyId=ASIATOJSA2QWT4VTU3BA&Expires=1589568462&Signature=NxkVBhypAVvmNr7ZJJzoWdNJAYs%3D&x-amz-security-token=IQoJb3JpZ2luX2VjEEkaCXVzLWVhc3QtMSJGMEQCIBGYl%2FjK7%2FBrQQ4a0ODlF9BjW%2BvJqCVGgf%2FuYUolBFI9AiADtK3UXwL4tnPjspQZjhAvpiSuLEzW2q1AxjhVYt18QCqpBAiR%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAEaDDIzNjg2NDk4NDEwOSIMkeT4uzRdLo%2BhkoDcKv0DaOJSFtVsWowXL3GW1Fkgn2JXLYm8%2BTri%2FmXhTdRhn%2BM64c%2FilyoVsDXbaYJQrXBsEsOTnyh1H2nZVIK5pgQ5lYahhrExL6MWjNpnTDAKGsiHmmZ4BFy9RRICoMWhDv5PBcPgBFdbi1rY5xgkQQOMJtiJvJWc64Jw2tcRsr1%2BM7G205O60rIfXXTOqI9iUJ6ni3UFrBX3SLpjWL9X23n%2BuCwQeWWbgJTeyqVG4gkkMH1xmidNNLJZW5AIMGmPCDuB5lkIfXjUgPTivKIuhWwK6HAMx3RfactZOYOnBy5H1yy%2F9A3WEWxi7powYnpY9DBVwk2%2FPaH3Sp4ZL4YfBmw9gyzf5z2yieWG%2FHn8SKTcgR24ayury1N6y9S63NZZFFvyTiXf4pKssaQ3uE5Y2pwd3%2BUxYKjc%2B5r984hPLJewaRFXTK9ZS1OOlF1ODbmU9aspExTP35J2jAfuNYJL55rhL3%2BHf0SCOw9dB9u4%2B9o2s9ITs102LFyg5Me6DGQDcvd6%2FPrEkOwLn0RMN8BGTsntam9xpe%2FL6hsHBGQLZ4kKhHP3QsFyUpWhIBx%2FCF3ebQnrniVpiVPwvnADbZlKz0K0E3NC5g0R5xwL8CtdtYEK8MtJJLUBtkp7dIdQOLFwY8hekiZnb%2BVNGUlNat6aEm0DW7h%2F%2F7UBJHV0qlqYW6cwt4L79QU68QH%2FMOI6PJFpJCZxwWaP8x4ww2%2FhHkRAFiS%2FYRQGX6lZZMTTxpTVO%2BRRj7Oq45zLgMRhJ0d3FCsYJ3Ijlof3EMA05HXTy4E09AllYEt5HGaEQsHgZBCiul%2F8ykN3UtRSSb0Q9M98UGvtm76mzBY5hplwtmTnVvfmYhuDWK6p9zrDPoE1SdtV479QZjQsZFhss3tNC5HIcb2d6E1RNNqxzn0TcT481Fzg37yguhqoZxl0xEIKwpWI0Woo43IY%2FqT0Ut6%2BOrqT2upf7BpYng%2Bv9RXOoL%2FTUANeylBbK1OGVoa8pr38jBKB%2F7JV%2FsLpqmrDbuaY",
+                                "rejectedReason": null
+                            }
+                        ]
+                    },
+                    {
+                        "__typename": "TruckingTrip",
+                        "id": "h_PO4kwOPN",
+                        "deliveryStatus": "CLAIMED",
+                        "progress": "PENDING",
+                        "deliveredAt": null,
+                        "scheduledDeliveryOn": "2020-05-06",
+                        "issues": [],
+                        "truckingOrder": {
+                            "__typename": "TruckingOrder",
+                            "id": "ysxY0o3oLC",
+                            "tripDistanceMiles": 20,
+                            "orderType": "FLAX",
+                            "locationFrom": {
+                                "__typename": "TruckingLocation",
+                                "id": "FDTaowyke",
+                                "phone": "9142345678",
+                                "address": {
+                                    "__typename": "Address",
+                                    "street": "3850 Mystic Valley Pkwy",
+                                    "street2": null,
+                                    "city": "Medford",
+                                    "postalCode": "2155",
+                                    "state": "MA",
+                                    "country": "USA"
+                                },
+                                "name": "Mark's Farm",
+                                "coordinates": {
+                                    "__typename": "GeoPoint",
+                                    "latitude": 42.406902,
+                                    "longitude": -71.092422
+                                },
+                                "imageUrl": null,
+                                "loadingInstructions": "These are the loading instructions"
+                            },
+                            "locationTo": {
+                                "__typename": "TruckingLocation",
+                                "id": "JA3UNIDmMX",
+                                "phone": "6192345678",
+                                "address": {
+                                    "__typename": "Address",
+                                    "street": "355 Artisan Way",
+                                    "street2": null,
+                                    "city": "Somerville",
+                                    "postalCode": "2145",
+                                    "state": "MA",
+                                    "country": "USA"
+                                },
+                                "name": "Farm P",
+                                "coordinates": {
+                                    "__typename": "GeoPoint",
+                                    "latitude": 42.3934755,
+                                    "longitude": -71.0802465
+                                },
+                                "imageUrl": null,
+                                "loadingInstructions": "Here are the unloading instructions"
+                            }
+                        },
+                        "documents": []
+                    },
+                    {
+                        "__typename": "TruckingTrip",
+                        "id": "6G2jrwMFWD",
+                        "deliveryStatus": "CLAIMED",
+                        "progress": "PENDING",
+                        "deliveredAt": null,
+                        "scheduledDeliveryOn": "2020-05-05",
+                        "issues": [],
+                        "truckingOrder": {
+                            "__typename": "TruckingOrder",
+                            "id": "ylIoS29ZGg",
+                            "tripDistanceMiles": 100,
+                            "orderType": "SALT",
+                            "locationFrom": {
+                                "__typename": "TruckingLocation",
+                                "id": "hqWa6LHnW",
+                                "phone": "9142345678",
+                                "address": {
+                                    "__typename": "Address",
+                                    "street": "3850 Mystic Valley Pkwy",
+                                    "street2": null,
+                                    "city": "Medford",
+                                    "postalCode": "2155",
+                                    "state": "MA",
+                                    "country": "USA"
+                                },
+                                "name": "Mark's Other Farm",
+                                "coordinates": {
+                                    "__typename": "GeoPoint",
+                                    "latitude": 42.406902,
+                                    "longitude": -71.092422
+                                },
+                                "imageUrl": null,
+                                "loadingInstructions": "These are the loading instructions"
+                            },
+                            "locationTo": {
+                                "__typename": "TruckingLocation",
+                                "id": "UwtXwyCnti",
+                                "phone": "6192345678",
+                                "address": {
+                                    "__typename": "Address",
+                                    "street": "419 Boston Ave",
+                                    "street2": null,
+                                    "city": "Medford",
+                                    "postalCode": "2155",
+                                    "state": "MA",
+                                    "country": "USA"
+                                },
+                                "name": "Farm Q",
+                                "coordinates": {
+                                    "__typename": "GeoPoint",
+                                    "latitude": 42.4085371,
+                                    "longitude": -71.1182729
+                                },
+                                "imageUrl": null,
+                                "loadingInstructions": "Here are the unloading instructions"
+                            }
+                        },
+                        "documents": []
+                    }
+                ]
+            }
+        }
+    }
+}

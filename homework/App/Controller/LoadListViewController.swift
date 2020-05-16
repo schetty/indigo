@@ -9,12 +9,12 @@
 import Foundation
 import UIKit
 
-class MapListViewController: UITableViewController {
-
-    let service: MapServiceClient
-    var mapData: [MapModel] = []
+class LoadListViewController: UITableViewController {
     
-    init(service: MapServiceClient = MapService()) {
+    let service: DriverDataServiceClient
+    var loadsData: [Load] = []
+    
+    init(service: DriverDataServiceClient = DriverDataService()) {
         self.service = service
         super.init(nibName: nil, bundle: nil)
     }
@@ -28,30 +28,29 @@ class MapListViewController: UITableViewController {
         view.backgroundColor = .magenta
     }
     
-    private func fetchMapData() {
-        service.fetchPOI { (model, e) in
-            if let e = e {
-                
-            }
-            else {
-                self.mapData = model
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
+    func refreshToken() {
+    }
+    
+    private func fetchDriverData() {
+        guard let token = PersistencyManager.sharedManager.fetchDriver()?.token else { return }
+        service.fetchDriverData(token: token) { (driver, err)  in
+            guard let loads = driver.loads else { return }
+            print(loads)
+//            self.loadsData = loads
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
             }
         }
     }
 }
 
-extension MapListViewController {
+extension LoadListViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return mapData.count
-        return 8
+        return loadsData.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //TODO: Need to setup tableviewcell here. Make it how you want
         let cell = UITableViewCell()
         cell.textLabel?.text = "Hello World"
         return cell

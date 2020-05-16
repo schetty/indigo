@@ -16,5 +16,13 @@ protocol Auth {
     func token(then completion: @escaping (String?) -> Void)
 }
 
-class DemoAuthClient: Auth { }
+class DemoAuthClient: Auth {
+    
+    func getToken() -> String? {
+        token { (resp) in
+            print(resp)
+        }
+        return ""
+    }
+}
 

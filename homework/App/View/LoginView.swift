@@ -11,14 +11,28 @@ import UIKit
 
 class LoginView: UIView {
     
-    lazy var submitButton: UIButton = {
+    lazy var loginButton: UIButton = {
         let button = UIButton()
-        button.frame = CGRect(x: 120,
-                              y: 400,
-                              width: 200,
+        button.frame = CGRect(x: 30,
+                              y: 300,
+                              width: 350,
                               height: 50)
         button.backgroundColor = .black
-        button.setTitle("Show Map:)", for: .normal)
+        button.setTitle("Login as evaluations+ios@indigoag.org", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        return button
+    }()
+
+    lazy var seeTripsButton: UIButton = {
+        let button = UIButton()
+        button.frame = CGRect(x: 30,
+                              y: 380,
+                              width: 350,
+                              height: 50)
+        button.backgroundColor = .black
+        button.alpha = 0.5
+        button.isEnabled = false
+        button.setTitle("See Trips", for: .normal)
         button.setTitleColor(.white, for: .normal)
         return button
     }()
@@ -33,7 +47,8 @@ class LoginView: UIView {
     }
         
     private func setup() {
-        self.backgroundColor = .cyan
-        addSubview(submitButton)
+        self.backgroundColor = .white
+        addSubview(loginButton)
+        addSubview(seeTripsButton)
     }
 }

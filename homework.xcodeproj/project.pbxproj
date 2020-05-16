@@ -8,12 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		39BFA88F246EF6B50086807D /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BFA88E246EF6B50086807D /* UserService.swift */; };
-		39BFA891246EF6C40086807D /* MapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BFA890246EF6C40086807D /* MapService.swift */; };
-		39BFA893246EF6F20086807D /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BFA892246EF6F20086807D /* MapModel.swift */; };
+		39BFA891246EF6C40086807D /* DriverService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BFA890246EF6C40086807D /* DriverService.swift */; };
 		39BFA896246EF75F0086807D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BFA895246EF75F0086807D /* LoginView.swift */; };
 		39BFA898246EF76A0086807D /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BFA897246EF76A0086807D /* MapView.swift */; };
 		39BFA89B246EF8030086807D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BFA89A246EF8030086807D /* LoginViewController.swift */; };
-		39BFA89D246EF80E0086807D /* MapListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BFA89C246EF80E0086807D /* MapListViewController.swift */; };
+		39BFA89D246EF80E0086807D /* LoadListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BFA89C246EF80E0086807D /* LoadListViewController.swift */; };
+		39BFAC9F246F33CC0086807D /* DriverModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BFAC9E246F33CC0086807D /* DriverModel.swift */; };
+		39BFACA7246F35A70086807D /* homeworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BFACA6246F35A70086807D /* homeworkTests.swift */; };
+		39BFACAE246F35B00086807D /* TripResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BFAC98246F1C040086807D /* TripResponseTests.swift */; };
+		39BFACB1246F54A30086807D /* PersistencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BFACB0246F54A30086807D /* PersistencyManager.swift */; };
+		39BFACB7246F5EC20086807D /* DriverData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 39BFACB5246F5EC20086807D /* DriverData.xcdatamodeld */; };
+		39BFACC3246F7F610086807D /* Trip+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BFACC2246F7F610086807D /* Trip+CoreDataClass.swift */; };
+		39BFACC4246F7F610086807D /* Driver+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BFACB9246F7F600086807D /* Driver+CoreDataProperties.swift */; };
+		39BFACC5246F7F610086807D /* Load+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BFACBF246F7F610086807D /* Load+CoreDataProperties.swift */; };
+		39BFACC6246F7F610086807D /* Driver+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BFACBD246F7F600086807D /* Driver+CoreDataClass.swift */; };
+		39BFACC7246F7F610086807D /* Coordinate+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BFACC0246F7F610086807D /* Coordinate+CoreDataProperties.swift */; };
+		39BFACC8246F7F610086807D /* Trip+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BFACC1246F7F610086807D /* Trip+CoreDataProperties.swift */; };
+		39BFACC9246F7F610086807D /* TruckingOrder+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BFACBE246F7F600086807D /* TruckingOrder+CoreDataClass.swift */; };
+		39BFACCA246F7F610086807D /* TruckingOrder+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BFACBC246F7F600086807D /* TruckingOrder+CoreDataProperties.swift */; };
+		39BFACCB246F7F610086807D /* Load+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BFACBA246F7F600086807D /* Load+CoreDataClass.swift */; };
+		39BFACCC246F7F610086807D /* Coordinate+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BFACBB246F7F600086807D /* Coordinate+CoreDataClass.swift */; };
 		40119F21245B7C0500D97CB3 /* request_body.json in Resources */ = {isa = PBXBuildFile; fileRef = 40119F20245B7C0500D97CB3 /* request_body.json */; };
 		66AB47D8243D1570000508FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AB47D7243D1570000508FB /* AppDelegate.swift */; };
 		66AB47E1243D1572000508FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66AB47E0243D1572000508FB /* Assets.xcassets */; };
@@ -24,16 +38,43 @@
 		87EC882248FCC06A32BE74EC /* Pods_homework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D27B24D6D233654D06D5F6E /* Pods_homework.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		39BFACA9246F35A70086807D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 66AB47CC243D1570000508FB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 66AB47D3243D1570000508FB;
+			remoteInfo = homework;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		0D27B24D6D233654D06D5F6E /* Pods_homework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_homework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		37F33EB8E24A1BD328BA669C /* Pods-homework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-homework.release.xcconfig"; path = "Target Support Files/Pods-homework/Pods-homework.release.xcconfig"; sourceTree = "<group>"; };
 		39BFA88E246EF6B50086807D /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
-		39BFA890246EF6C40086807D /* MapService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapService.swift; sourceTree = "<group>"; };
-		39BFA892246EF6F20086807D /* MapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
+		39BFA890246EF6C40086807D /* DriverService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverService.swift; sourceTree = "<group>"; };
 		39BFA895246EF75F0086807D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		39BFA897246EF76A0086807D /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		39BFA89A246EF8030086807D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		39BFA89C246EF80E0086807D /* MapListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapListViewController.swift; sourceTree = "<group>"; };
+		39BFA89C246EF80E0086807D /* LoadListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadListViewController.swift; sourceTree = "<group>"; };
+		39BFAC98246F1C040086807D /* TripResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripResponseTests.swift; sourceTree = "<group>"; };
+		39BFAC9A246F1D020086807D /* mock_response.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mock_response.json; sourceTree = "<group>"; };
+		39BFAC9E246F33CC0086807D /* DriverModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriverModel.swift; sourceTree = "<group>"; };
+		39BFACA4246F35A70086807D /* homeworkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = homeworkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		39BFACA6246F35A70086807D /* homeworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homeworkTests.swift; sourceTree = "<group>"; };
+		39BFACA8246F35A70086807D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		39BFACB0246F54A30086807D /* PersistencyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistencyManager.swift; sourceTree = "<group>"; };
+		39BFACB6246F5EC20086807D /* DriverData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DriverData.xcdatamodel; sourceTree = "<group>"; };
+		39BFACB9246F7F600086807D /* Driver+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Driver+CoreDataProperties.swift"; path = "/Users/schettini/Downloads/ios-takehome/homework/homework/App/Network/Model/Driver+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		39BFACBA246F7F600086807D /* Load+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Load+CoreDataClass.swift"; path = "/Users/schettini/Downloads/ios-takehome/homework/homework/App/Network/Model/Load+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		39BFACBB246F7F600086807D /* Coordinate+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Coordinate+CoreDataClass.swift"; path = "/Users/schettini/Downloads/ios-takehome/homework/homework/App/Network/Model/Coordinate+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		39BFACBC246F7F600086807D /* TruckingOrder+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "TruckingOrder+CoreDataProperties.swift"; path = "/Users/schettini/Downloads/ios-takehome/homework/homework/App/Network/Model/TruckingOrder+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		39BFACBD246F7F600086807D /* Driver+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Driver+CoreDataClass.swift"; path = "/Users/schettini/Downloads/ios-takehome/homework/homework/App/Network/Model/Driver+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		39BFACBE246F7F600086807D /* TruckingOrder+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "TruckingOrder+CoreDataClass.swift"; path = "/Users/schettini/Downloads/ios-takehome/homework/homework/App/Network/Model/TruckingOrder+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		39BFACBF246F7F610086807D /* Load+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Load+CoreDataProperties.swift"; path = "/Users/schettini/Downloads/ios-takehome/homework/homework/App/Network/Model/Load+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		39BFACC0246F7F610086807D /* Coordinate+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Coordinate+CoreDataProperties.swift"; path = "/Users/schettini/Downloads/ios-takehome/homework/homework/App/Network/Model/Coordinate+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		39BFACC1246F7F610086807D /* Trip+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Trip+CoreDataProperties.swift"; path = "/Users/schettini/Downloads/ios-takehome/homework/homework/App/Network/Model/Trip+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		39BFACC2246F7F610086807D /* Trip+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Trip+CoreDataClass.swift"; path = "/Users/schettini/Downloads/ios-takehome/homework/homework/App/Network/Model/Trip+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		40119F20245B7C0500D97CB3 /* request_body.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = request_body.json; sourceTree = "<group>"; };
 		66AB47D4243D1570000508FB /* homework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = homework.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66AB47D7243D1570000508FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -47,6 +88,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		39BFACA1246F35A70086807D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		66AB47D1243D1570000508FB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -72,7 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				39BFA89A246EF8030086807D /* LoginViewController.swift */,
-				39BFA89C246EF80E0086807D /* MapListViewController.swift */,
+				39BFA89C246EF80E0086807D /* LoadListViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -80,6 +128,8 @@
 		39BFA88B246EF66A0086807D /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				39BFACAF246F54980086807D /* Managers */,
+				39BFAC97246F1BCD0086807D /* Tests */,
 				39BFA88D246EF68E0086807D /* Services */,
 				39BFA88C246EF6840086807D /* Model */,
 			);
@@ -89,7 +139,8 @@
 		39BFA88C246EF6840086807D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				39BFA892246EF6F20086807D /* MapModel.swift */,
+				39BFACCD246F7F690086807D /* CoreDataModels */,
+				39BFAC9E246F33CC0086807D /* DriverModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -98,7 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				39BFA88E246EF6B50086807D /* UserService.swift */,
-				39BFA890246EF6C40086807D /* MapService.swift */,
+				39BFA890246EF6C40086807D /* DriverService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -119,15 +170,75 @@
 				66AB47E0243D1572000508FB /* Assets.xcassets */,
 				66AB47E2243D1572000508FB /* LaunchScreen.storyboard */,
 				66AB47E5243D1572000508FB /* Info.plist */,
-				40119F20245B7C0500D97CB3 /* request_body.json */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		39BFAC97246F1BCD0086807D /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				39BFAC98246F1C040086807D /* TripResponseTests.swift */,
+				39BFAC9B246F1DC50086807D /* Mocks */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		39BFAC9B246F1DC50086807D /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				39BFAC9A246F1D020086807D /* mock_response.json */,
+				40119F20245B7C0500D97CB3 /* request_body.json */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		39BFACA5246F35A70086807D /* homeworkTests */ = {
+			isa = PBXGroup;
+			children = (
+				39BFACA6246F35A70086807D /* homeworkTests.swift */,
+				39BFACA8246F35A70086807D /* Info.plist */,
+			);
+			path = homeworkTests;
+			sourceTree = "<group>";
+		};
+		39BFACAF246F54980086807D /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				39BFACB0246F54A30086807D /* PersistencyManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		39BFACB4246F5EA70086807D /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				39BFACB5246F5EC20086807D /* DriverData.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		39BFACCD246F7F690086807D /* CoreDataModels */ = {
+			isa = PBXGroup;
+			children = (
+				39BFACBD246F7F600086807D /* Driver+CoreDataClass.swift */,
+				39BFACB9246F7F600086807D /* Driver+CoreDataProperties.swift */,
+				39BFACBA246F7F600086807D /* Load+CoreDataClass.swift */,
+				39BFACBF246F7F610086807D /* Load+CoreDataProperties.swift */,
+				39BFACBE246F7F600086807D /* TruckingOrder+CoreDataClass.swift */,
+				39BFACBC246F7F600086807D /* TruckingOrder+CoreDataProperties.swift */,
+				39BFACBB246F7F600086807D /* Coordinate+CoreDataClass.swift */,
+				39BFACC0246F7F610086807D /* Coordinate+CoreDataProperties.swift */,
+				39BFACC2246F7F610086807D /* Trip+CoreDataClass.swift */,
+				39BFACC1246F7F610086807D /* Trip+CoreDataProperties.swift */,
+			);
+			path = CoreDataModels;
 			sourceTree = "<group>";
 		};
 		66AB47CB243D1570000508FB = {
 			isa = PBXGroup;
 			children = (
 				66AB47D6243D1570000508FB /* homework */,
+				39BFACA5246F35A70086807D /* homeworkTests */,
 				66AB47D5243D1570000508FB /* Products */,
 				CE68B63070177FED54590BA9 /* Pods */,
 				CC6D264C54197275CA648C81 /* Frameworks */,
@@ -138,6 +249,7 @@
 			isa = PBXGroup;
 			children = (
 				66AB47D4243D1570000508FB /* homework.app */,
+				39BFACA4246F35A70086807D /* homeworkTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -145,6 +257,7 @@
 		66AB47D6243D1570000508FB /* homework */ = {
 			isa = PBXGroup;
 			children = (
+				39BFACB4246F5EA70086807D /* CoreData */,
 				39BFA889246EF6540086807D /* App */,
 				66AB47F2243D1B41000508FB /* Bridge */,
 				66AB47EB243D15DE000508FB /* Internal */,
@@ -190,6 +303,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		39BFACA3246F35A70086807D /* homeworkTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 39BFACAB246F35A70086807D /* Build configuration list for PBXNativeTarget "homeworkTests" */;
+			buildPhases = (
+				39BFACA0246F35A70086807D /* Sources */,
+				39BFACA1246F35A70086807D /* Frameworks */,
+				39BFACA2246F35A70086807D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				39BFACAA246F35A70086807D /* PBXTargetDependency */,
+			);
+			name = homeworkTests;
+			productName = homeworkTests;
+			productReference = 39BFACA4246F35A70086807D /* homeworkTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		66AB47D3243D1570000508FB /* homework */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 66AB47E8243D1572000508FB /* Build configuration list for PBXNativeTarget "homework" */;
@@ -219,6 +350,10 @@
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = Indigo;
 				TargetAttributes = {
+					39BFACA3246F35A70086807D = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = 66AB47D3243D1570000508FB;
+					};
 					66AB47D3243D1570000508FB = {
 						CreatedOnToolsVersion = 11.3.1;
 					};
@@ -238,11 +373,19 @@
 			projectRoot = "";
 			targets = (
 				66AB47D3243D1570000508FB /* homework */,
+				39BFACA3246F35A70086807D /* homeworkTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		39BFACA2246F35A70086807D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		66AB47D2243D1570000508FB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -298,25 +441,54 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		39BFACA0246F35A70086807D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				39BFACA7246F35A70086807D /* homeworkTests.swift in Sources */,
+				39BFACAE246F35B00086807D /* TripResponseTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		66AB47D0243D1570000508FB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39BFA893246EF6F20086807D /* MapModel.swift in Sources */,
+				39BFACCC246F7F610086807D /* Coordinate+CoreDataClass.swift in Sources */,
 				66AB47EF243D1680000508FB /* DemoAuth.swift in Sources */,
+				39BFACCB246F7F610086807D /* Load+CoreDataClass.swift in Sources */,
+				39BFACC6246F7F610086807D /* Driver+CoreDataClass.swift in Sources */,
 				39BFA896246EF75F0086807D /* LoginView.swift in Sources */,
 				39BFA88F246EF6B50086807D /* UserService.swift in Sources */,
+				39BFACC5246F7F610086807D /* Load+CoreDataProperties.swift in Sources */,
 				66AB47D8243D1570000508FB /* AppDelegate.swift in Sources */,
 				66AB47ED243D15EB000508FB /* Auth.swift in Sources */,
 				39BFA898246EF76A0086807D /* MapView.swift in Sources */,
 				66AB47F4243D1B57000508FB /* Constants.swift in Sources */,
+				39BFACC9246F7F610086807D /* TruckingOrder+CoreDataClass.swift in Sources */,
+				39BFACB1246F54A30086807D /* PersistencyManager.swift in Sources */,
+				39BFACC4246F7F610086807D /* Driver+CoreDataProperties.swift in Sources */,
+				39BFACCA246F7F610086807D /* TruckingOrder+CoreDataProperties.swift in Sources */,
+				39BFACC3246F7F610086807D /* Trip+CoreDataClass.swift in Sources */,
+				39BFACB7246F5EC20086807D /* DriverData.xcdatamodeld in Sources */,
 				39BFA89B246EF8030086807D /* LoginViewController.swift in Sources */,
-				39BFA891246EF6C40086807D /* MapService.swift in Sources */,
-				39BFA89D246EF80E0086807D /* MapListViewController.swift in Sources */,
+				39BFAC9F246F33CC0086807D /* DriverModel.swift in Sources */,
+				39BFA891246EF6C40086807D /* DriverService.swift in Sources */,
+				39BFA89D246EF80E0086807D /* LoadListViewController.swift in Sources */,
+				39BFACC7246F7F610086807D /* Coordinate+CoreDataProperties.swift in Sources */,
+				39BFACC8246F7F610086807D /* Trip+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		39BFACAA246F35A70086807D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 66AB47D3243D1570000508FB /* homework */;
+			targetProxy = 39BFACA9246F35A70086807D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		66AB47E2243D1572000508FB /* LaunchScreen.storyboard */ = {
@@ -330,6 +502,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		39BFACAC246F35A70086807D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2499Y3EK3Q;
+				INFOPLIST_FILE = homeworkTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.naomischettini.homeworkTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/homework.app/homework";
+			};
+			name = Debug;
+		};
+		39BFACAD246F35A70086807D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2499Y3EK3Q;
+				INFOPLIST_FILE = homeworkTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.naomischettini.homeworkTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/homework.app/homework";
+			};
+			name = Release;
+		};
 		66AB47E6243D1572000508FB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -485,6 +697,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		39BFACAB246F35A70086807D /* Build configuration list for PBXNativeTarget "homeworkTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				39BFACAC246F35A70086807D /* Debug */,
+				39BFACAD246F35A70086807D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		66AB47CF243D1570000508FB /* Build configuration list for PBXProject "homework" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -504,6 +725,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		39BFACB5246F5EC20086807D /* DriverData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				39BFACB6246F5EC20086807D /* DriverData.xcdatamodel */,
+			);
+			currentVersion = 39BFACB6246F5EC20086807D /* DriverData.xcdatamodel */;
+			path = DriverData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 66AB47CC243D1570000508FB /* Project object */;
 }
