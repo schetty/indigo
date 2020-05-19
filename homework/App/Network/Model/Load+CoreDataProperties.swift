@@ -2,7 +2,7 @@
 //  Load+CoreDataProperties.swift
 //  
 //
-//  Created by Naomi Schettini on 5/15/20.
+//  Created by Naomi Schettini on 5/17/20.
 //
 //
 
@@ -16,7 +16,7 @@ extension Load {
         return NSFetchRequest<Load>(entityName: "Load")
     }
 
-    @NSManaged public var trips: NSSet?
+    @NSManaged public var trips: Set<Trip>?
 
 }
 

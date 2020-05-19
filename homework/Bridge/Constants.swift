@@ -11,6 +11,8 @@ import Foundation
 struct Constants {
 
     static var apiURL = URL(string: "https://api.indigoag.build/graphql")!
+    static var requestBodyJson = "request_body"
+
     
     struct Login {
         static var clientId: String    { return "za6TP5NcPzU4RS7ioSVM4O51aDl1y0Oy" }

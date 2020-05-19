@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-enum Status {
+enum UserStatus {
     case loggedIn
     case loggedOut
 }
@@ -17,13 +17,13 @@ enum Status {
 class LoginViewController: UIViewController {
     
     let rootView = LoginView()
-    let service: UserServiceClient
-    let auth: Auth
-    var status: Status = .loggedOut
-
-    init(service: UserServiceClient = UserService(), authClient: Auth = DemoAuthClient()) {
-        self.service = service
-        self.auth = authClient
+    let userService: UserServiceClient
+    let driverDataService: DriverDataServiceClient
+    var status: UserStatus = .loggedOut
+    
+    init(userService: UserServiceClient = UserService(), driverDataService: DriverDataServiceClient = DriverDataService()) {
+        self.userService = userService
+        self.driverDataService = driverDataService
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -38,21 +38,30 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        PersistencyManager.sharedManager.persistentContainer.viewContext
         rootView.loginButton.addTarget(self, action: #selector(loginUser), for: .touchUpInside)
         rootView.seeTripsButton.addTarget(self, action: #selector(presentList), for: .touchUpInside)
+        guard let driver = PersistencyManager.sharedManager.fetchDriver(), driver.token != nil else { self.status = .loggedOut
+            return
+        }
+        self.status = .loggedIn
+        adjustUIForStatus()
     }
     
     @objc func loginUser() {
-        service.login(email: Constants.Login.username, password: Constants.Login.password, then: { (response) in
+        userService.login(email: Constants.Login.username, password: Constants.Login.password, then: { (response) in
             guard let token = response else { return print("error") }
             PersistencyManager.sharedManager.buildDriver(token: token)
             self.status = .loggedIn
-            self.adjustStatus()
+            self.adjustUIForStatus()
         })
     }
     
     @objc func presentList() {
+        guard let driver = PersistencyManager.sharedManager.fetchDriver(), let token = driver.token else { print("Cannot fetch token from driver")
+            return
+        }
+        driverDataService.fetchDriverData(token: token) { () in
+        }
         let list = LoadListViewController()
         self.present(list, animated:true, completion:nil)
     }
@@ -60,7 +69,7 @@ class LoginViewController: UIViewController {
 
 extension LoginViewController {
     
-    func adjustStatus() {
+    func adjustUIForStatus() {
         if status == .loggedIn {
             DispatchQueue.main.async {
                 self.rootView.loginButton.setTitle("logged in :)", for: .normal)

@@ -2,7 +2,7 @@
 //  Driver+CoreDataProperties.swift
 //  
 //
-//  Created by Naomi Schettini on 5/15/20.
+//  Created by Naomi Schettini on 5/17/20.
 //
 //
 
@@ -17,7 +17,7 @@ extension Driver {
     }
 
     @NSManaged public var token: String?
-    @NSManaged public var loads: NSSet?
+    @NSManaged public var loads: Set<Load>?
 
 }
 

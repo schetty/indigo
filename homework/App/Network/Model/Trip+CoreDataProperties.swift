@@ -2,13 +2,12 @@
 //  Trip+CoreDataProperties.swift
 //  
 //
-//  Created by Naomi Schettini on 5/15/20.
+//  Created by Naomi Schettini on 5/17/20.
 //
 //
 
 import Foundation
 import CoreData
-
 
 extension Trip {
 

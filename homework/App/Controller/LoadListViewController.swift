@@ -33,10 +33,10 @@ class LoadListViewController: UITableViewController {
     
     private func fetchDriverData() {
         guard let token = PersistencyManager.sharedManager.fetchDriver()?.token else { return }
-        service.fetchDriverData(token: token) { (driver, err)  in
+        service.fetchDriverData(token: token) { ()  in
             guard let loads = driver.loads else { return }
             print(loads)
-//            self.loadsData = loads
+            self.loadsData = loads
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }

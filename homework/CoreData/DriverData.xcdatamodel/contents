@@ -24,10 +24,10 @@
         <relationship name="locationTo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Coordinate"/>
     </entity>
     <elements>
-        <element name="Driver" positionX="-184.03125" positionY="-91.16015625" width="128" height="73"/>
-        <element name="Load" positionX="-54" positionY="-22.8203125" width="128" height="58"/>
+        <element name="Coordinate" positionX="105.3203125" positionY="204.2578125" width="128" height="73"/>
+        <element name="Driver" positionX="-339.5" positionY="-166.11328125" width="128" height="73"/>
+        <element name="Load" positionX="-51.0625" positionY="-161.82421875" width="128" height="58"/>
         <element name="Trip" positionX="137.296875" positionY="17.671875" width="128" height="88"/>
-        <element name="TruckingOrder" positionX="-118.56640625" positionY="114.09375" width="128" height="118"/>
-        <element name="Coordinate" positionX="48.421875" positionY="114.45703125" width="128" height="73"/>
+        <element name="TruckingOrder" positionX="-327.203125" positionY="47.03515625" width="128" height="118"/>
     </elements>
 </model>

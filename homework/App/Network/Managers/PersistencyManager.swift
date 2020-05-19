@@ -45,7 +45,7 @@ class PersistencyManager {
 /* DATA MANAGEMENT */
 extension PersistencyManager {
     
-    func buildDriver(token: String) -> Driver? {
+    func buildDriver(token: String) {
 
         let managedContext = PersistencyManager.sharedManager.persistentContainer.viewContext
         let entity = NSEntityDescription.entity(forEntityName: "Driver",
@@ -58,10 +58,8 @@ extension PersistencyManager {
 
         do {
             try managedContext.save()
-            return driver as? Driver
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
-            return nil
         }
     }
     
@@ -71,7 +69,7 @@ extension PersistencyManager {
       let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Driver")
       do {
         let driver = try managedContext.fetch(fetchRequest)
-        return driver as? Driver
+        return driver.first as? Driver
       } catch let error as NSError {
         print("Could not fetch. \(error), \(error.userInfo)")
         return nil
