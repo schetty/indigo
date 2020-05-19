@@ -17,7 +17,7 @@ extension Driver {
     }
 
     @NSManaged public var token: String?
-    @NSManaged public var loads: Set<Load>?
+    @NSManaged public var loads: Load?
 
 }
 

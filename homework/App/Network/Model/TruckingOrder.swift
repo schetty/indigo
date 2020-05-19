@@ -19,8 +19,11 @@ public class TruckingOrder: NSManagedObject, Codable {
     }
     
     public required convenience init(from decoder: Decoder) throws {
-        guard let context = decoder.userInfo[CodingUserInfoKey.context!] as? NSManagedObjectContext else { fatalError("Some fatal error") }
-        guard let entity = NSEntityDescription.entity(forEntityName: "Driver", in: context) else { fatalError() }
+       let codingUserInfoKeyManagedObjectContext = CodingUserInfoKey.context
+          let context = CoreDataHelper.sharedInstance.persistentContainer.viewContext
+          guard let entity = NSEntityDescription.entity(forEntityName: "TruckingOrder", in: context) else {
+              fatalError()
+          }
         
         self.init(entity: entity, insertInto: context)
         let values = try decoder.container(keyedBy: CodingKeys.self)

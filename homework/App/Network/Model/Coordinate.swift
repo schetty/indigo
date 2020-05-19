@@ -17,13 +17,13 @@ public class Coordinate: NSManagedObject, Codable {
     }
     
     public required convenience init(from decoder: Decoder) throws {
-        guard let context = decoder.userInfo[CodingUserInfoKey.context!] as? NSManagedObjectContext else { fatalError("Some fatal error") }
-        guard let entity = NSEntityDescription.entity(forEntityName: "Coordinate", in: context) else { fatalError() }
+        let codingUserInfoKeyManagedObjectContext = CodingUserInfoKey.context
+          let context = CoreDataHelper.sharedInstance.persistentContainer.viewContext
+          guard let entity = NSEntityDescription.entity(forEntityName: "Coordinate", in: context) else {
+              fatalError()
+          }
         
         self.init(entity: entity, insertInto: context)
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        self.latitude = try values.decode(Double.self, forKey: CodingKeys.latitude)
-        self.longitude = try values.decode(Double.self, forKey: CodingKeys.longitude)
     }
     
     public func encode(to encoder: Encoder) throws {

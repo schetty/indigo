@@ -16,7 +16,7 @@ extension Load {
         return NSFetchRequest<Load>(entityName: "Load")
     }
 
-    @NSManaged public var trips: Set<Trip>?
+    @NSManaged public var trips: Set<Trip>
 
 }
 

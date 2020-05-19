@@ -63,4 +63,29 @@ class CoreDataHelper {
         }
     }
     
+    public func getContext() -> NSManagedObjectContext {
+        return persistentContainer.viewContext
+    }
+}
+
+/* DATA MANAGEMENT */
+extension CoreDataHelper {
+    
+    func buildDriver(token: String) {
+
+        let managedContext = CoreDataHelper.sharedInstance.persistentContainer.viewContext
+        let entity = NSEntityDescription.entity(forEntityName: "Driver",
+                                                in: managedContext)!
+  
+        let driver = NSManagedObject(entity: entity,
+                                     insertInto: managedContext)
+        
+        driver.setValue(token, forKeyPath: "token")
+
+        do {
+            try managedContext.save()
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
 }

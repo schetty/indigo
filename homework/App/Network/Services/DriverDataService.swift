@@ -39,8 +39,7 @@ class DriverDataService: DriverDataServiceClient {
         return data
     }
     
-    func fetchDriverData(token: String, _ completionHandler: @escaping () -> (Rsp, Error) ) {
-        
+    func fetchDriverData(token: String, _ completionHandler: @escaping () -> (Void) ) {
         let session = URLSession.shared
         var request = URLRequest(url: Endpoint.fetchDriverData.baseURL)
         request.addValue("bearer \(token)", forHTTPHeaderField: "Authorization")
@@ -60,10 +59,9 @@ class DriverDataService: DriverDataServiceClient {
                 print("there was a data error")
                 return
             }
-
             do {
                 let decoder = JSONDecoder()
-                let response = try decoder.decode(Driver.self, from: data)
+                let response = try decoder.decode(DataJSON.self, from: data)
                 print(response)
                 
             } catch {
@@ -74,3 +72,13 @@ class DriverDataService: DriverDataServiceClient {
         completionHandler()
     }
 }
+
+extension String {
+    func convertToDictionary() -> [String: Any]? {
+        if let data = data(using: .utf8) {
+            return try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+        }
+        return nil
+    }
+}
+

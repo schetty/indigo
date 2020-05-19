@@ -8,11 +8,13 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class LoadListViewController: UITableViewController {
     
     let service: DriverDataServiceClient
-    var loadsData: [Load] = []
+    
+    var tripsData: [Trip] = []
     
     init(service: DriverDataServiceClient = DriverDataService()) {
         self.service = service
@@ -31,15 +33,15 @@ class LoadListViewController: UITableViewController {
     func refreshToken() {
     }
     
-    private func fetchDriverData() {
-        guard let token = PersistencyManager.sharedManager.fetchDriver()?.token else { return }
-        service.fetchDriverData(token: token) { ()  in
-            guard let loads = driver.loads else { return }
-            print(loads)
-            self.loadsData = loads
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
+    func retrieveTripData() {
+        let request: NSFetchRequest<Trip> = Trip.fetchRequest()
+        let sort = NSSortDescriptor(key: "id", ascending: false)
+        request.resultType = .managedObjectResultType
+        do {
+            self.tripsData = try CoreDataHelper.sharedInstance.getContext().fetch(request)
+            tableView.reloadData()
+        } catch {
+            print("Fetch failed")
         }
     }
 }
@@ -47,12 +49,17 @@ class LoadListViewController: UITableViewController {
 extension LoadListViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return loadsData.count
+        return tripsData.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        cell.textLabel?.text = "Hello World"
+        let load = tripsData[indexPath.row]
+        guard let id = tripsData[indexPath.row].id else {
+            cell.textLabel?.text = "No trip data available"
+            return cell
+        }
+        cell.textLabel?.text = id
         return cell
     }
 }

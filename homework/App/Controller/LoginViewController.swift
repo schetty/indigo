@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 enum UserStatus {
     case loggedIn
@@ -20,6 +21,8 @@ class LoginViewController: UIViewController {
     let userService: UserServiceClient
     let driverDataService: DriverDataServiceClient
     var status: UserStatus = .loggedOut
+    
+    private var currentToken: String?
     
     init(userService: UserServiceClient = UserService(), driverDataService: DriverDataServiceClient = DriverDataService()) {
         self.userService = userService
@@ -40,7 +43,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         rootView.loginButton.addTarget(self, action: #selector(loginUser), for: .touchUpInside)
         rootView.seeTripsButton.addTarget(self, action: #selector(presentList), for: .touchUpInside)
-        guard let driver = PersistencyManager.sharedManager.fetchDriver(), driver.token != nil else { self.status = .loggedOut
+        guard hasToken() else { self.status = .loggedOut
             return
         }
         self.status = .loggedIn
@@ -50,20 +53,37 @@ class LoginViewController: UIViewController {
     @objc func loginUser() {
         userService.login(email: Constants.Login.username, password: Constants.Login.password, then: { (response) in
             guard let token = response else { return print("error") }
-            PersistencyManager.sharedManager.buildDriver(token: token)
+            self.currentToken = token
+            CoreDataHelper.sharedInstance.buildDriver(token: token)
             self.status = .loggedIn
-            self.adjustUIForStatus()
+            DispatchQueue.main.async {
+                self.adjustUIForStatus()
+            }
         })
     }
     
+    private func hasToken() -> Bool {
+        let request: NSFetchRequest<Driver> = Driver.fetchRequest()
+        do {
+            let driver = try CoreDataHelper.sharedInstance.getContext().fetch(request)
+            if (driver.first?.token != nil) { return true }
+        } catch {
+            print("Fetch failed")
+        }
+        return false
+    }
+    
+    
     @objc func presentList() {
-        guard let driver = PersistencyManager.sharedManager.fetchDriver(), let token = driver.token else { print("Cannot fetch token from driver")
+        guard let tok = currentToken else {
+            print("No token")
             return
         }
-        driverDataService.fetchDriverData(token: token) { () in
+        driverDataService.fetchDriverData(token: tok) {
+            let list = LoadListViewController()
+            list.retrieveTripData()
+            self.present(list, animated: true, completion: nil)
         }
-        let list = LoadListViewController()
-        self.present(list, animated:true, completion:nil)
     }
 }
 
