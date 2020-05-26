@@ -43,6 +43,7 @@ class TripListViewController: UITableViewController {
     }
     
     @objc private func sortByID() {
+        tripsData = tripsData.sorted(by: { $0.id ?? "" > $1.id ?? "" })
         tableView.reloadData()
     }
     
@@ -53,23 +54,43 @@ class TripListViewController: UITableViewController {
                 return
             }
             self.driverDataService.setTokenToUserDefaults(token: t)
+            self.driverDataService.fetchDriverData(token: t) { (success) in
+                switch success {
+                case true:
+                    self.retrieveTripData()
+                case false:
+                    print("couldn't fetch new driver data")
+                }
+            }
         }
     }
     
     func retrieveTripData() {
-        let context = CoreDataHelper.sharedInstance.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "TripModel")
-        do {
-            //            let resp = try context.fetch(fetchRequest)
-            let response = TripModel(context: context)
-            tripsData.append(response)
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
+        guard let trips = CoreDataHelper.arrayOf(TripModel.self) as? [TripModel] else { return }
+        tripsData = trips
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
         }
     }
 }
 
 extension TripListViewController {
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView()
+        view.backgroundColor = UIColor(red: 0.83, green: 0.77, blue: 0.98, alpha: 1.00)
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 380, height: 60))
+        label.text = "Tap the cell to view distance from delivery location."
+        label.adjustsFontSizeToFitWidth = true
+        label.textColor = .black
+        label.textAlignment = .center
+        view.addSubview(label)
+        return view
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 70.0
+    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tripsData.count
@@ -78,12 +99,21 @@ extension TripListViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         let trip = tripsData[indexPath.row]
-        guard let progress = trip.progress else {
+        guard let tripId = trip.id else {
             cell.textLabel?.text = "No trip data available"
             return cell
         }
-        cell.textLabel?.text = progress
+        guard let distance = trip.truckingOrder?.tripDistanceMiles else {
+            cell.textLabel?.text = "Trip: \(tripId)  " + "   Distance: \("n/a")"
+            return cell
+        }
+        cell.textLabel?.text = "Trip: \(tripId)  " + "   Distance: \(distance)"
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let mapViewController = MapViewController()
+        mapViewController.tripTruckingOrder = self.tripsData[indexPath.row].truckingOrder
+        self.navigationController?.present(MapViewController(), animated: true, completion: nil)
+    }
 }

@@ -21,11 +21,8 @@ private enum Endpoint {
 }
 protocol DriverDataServiceClient {
     func fetchDriverData(token: String, _ completionHandler: @escaping (_ success: Bool) -> () )
-}
-
-extension DriverDataServiceClient {
-    func setTokenToUserDefaults(token: String) {}
-    func getToken() -> String? { return nil }
+    func getToken() -> String?
+    func setTokenToUserDefaults(token: String)
 }
 
 class DriverDataService: DriverDataServiceClient {

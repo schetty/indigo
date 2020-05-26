@@ -13,30 +13,6 @@ class CoreDataHelper {
     
     static let sharedInstance: CoreDataHelper = CoreDataHelper()
     
-    func getItems<T : NSManagedObject>(predicate : NSPredicate? = nil) -> [T]{
-        do {
-            let reqest = T.fetchRequest()
-            reqest.predicate = predicate
-            if let items = try persistentContainer.viewContext.fetch(reqest) as? [T] {
-                return items
-            } else {
-                return [T]()
-            }
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
-            return [T]()
-        }
-    }
-    
-    func getObjectBy<T : NSManagedObject>(id : NSManagedObjectID) -> T? {
-        if let object = try? persistentContainer.viewContext.existingObject(with: id) as? T {
-            return object
-        }
-        else {
-            return nil
-        }
-    }
-    
     var persistentContainer: NSPersistentContainer = {
         let description = NSPersistentStoreDescription()
         
@@ -50,6 +26,40 @@ class CoreDataHelper {
         })
         return container
     }()
+    
+   class func arrayOf<T: NSManagedObject>(_ entity: T.Type,
+                                           predicate: NSPredicate? = nil,
+                                           sortDescriptor: [NSSortDescriptor]? = nil,
+                                           context: NSManagedObjectContext = CoreDataHelper.sharedInstance.getContext()) -> NSMutableArray? {
+
+        let fetchRequest = NSFetchRequest<T>(entityName: NSStringFromClass(T.self))
+
+        if predicate != nil {
+            fetchRequest.predicate = predicate!
+        }
+
+        if sortDescriptor != nil {
+            fetchRequest.sortDescriptors = sortDescriptor!
+        }
+
+        fetchRequest.returnsObjectsAsFaults = false
+
+        do {
+
+            let searchResult = try context.fetch(fetchRequest)
+            if searchResult.count > 0 {
+                // returns mutable copy of result array
+                return NSMutableArray.init(array: searchResult)
+            } else {
+                // returns nil in case no object found
+                return nil
+            }
+
+        } catch {
+            print(error.localizedDescription)
+            return nil
+        }
+    }
     
     func saveContext() {
         let context = persistentContainer.viewContext
@@ -68,9 +78,6 @@ class CoreDataHelper {
     }
 }
 
-/* DATA MANAGEMENT */
-extension CoreDataHelper {
-}
 
 extension CodingUserInfoKey {
     static let context = CodingUserInfoKey(rawValue: "context")!

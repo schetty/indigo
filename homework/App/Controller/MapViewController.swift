@@ -12,6 +12,7 @@ import MapKit
 class MapViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
+    public var tripTruckingOrder: TruckingOrderModel?
     
     override func viewDidLoad() {
        // mapView.centerToLocation(initialLocation)

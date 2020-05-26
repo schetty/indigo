@@ -8,8 +8,8 @@
 
 import Foundation
 import XCTest
-import homework
-import Auth0
+@testable import Auth0
+@testable import homework
 
 class UserServiceTests: XCTestCase {
     
@@ -25,5 +25,8 @@ class UserServiceTests: XCTestCase {
         let email = "aaa@fnf.hu"
         let password = "fodkf"
     }
-
+    
+    func testUserLoginSucceed() {
+        
+    }
 }

@@ -13,7 +13,7 @@ import CoreData
 @objc(TripModel)
 public class TripModel: NSManagedObject, Decodable {
     enum CodingKeys: String, CodingKey {
-        case deliveryStatus, progress, scheduledDeliveryOn, truckingOrder
+        case id, deliveryStatus, progress, scheduledDeliveryOn, truckingOrder
     }
     
     required convenience public init(from decoder: Decoder) throws {
@@ -24,6 +24,8 @@ public class TripModel: NSManagedObject, Decodable {
         self.init(entity: entity, insertInto: context)
         
         let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        self.id = try container.decode(String.self, forKey: .id)
         self.deliveryStatus = try container.decode(String.self, forKey: .deliveryStatus)
         self.progress = try container.decode(String.self, forKey: .progress)
         self.scheduledDeliveryOn = try container.decode(String.self, forKey: .scheduledDeliveryOn)

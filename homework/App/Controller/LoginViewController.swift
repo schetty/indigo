@@ -48,9 +48,13 @@ class LoginViewController: UIViewController {
         adjustUIForStatus()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        
+    }
+    
     @objc func getToken() {
         userService.token { (token) in
-            guard let t = token else { return print("no token") }
+             guard let t = token else { return print("no token") }
             self.driverDataService.setTokenToUserDefaults(token: t)
             DispatchQueue.main.async {
                 self.adjustUIForStatus()
@@ -85,17 +89,13 @@ extension LoginViewController {
     
     func adjustUIForStatus() {
         if hasToken() {
-            DispatchQueue.main.async {
-                self.rootView.loginButton.setTitle(StringConstants.loggedIn, for: .normal)
-                self.rootView.seeTripsButton.isEnabled = true
-                self.rootView.seeTripsButton.alpha = 1.0
-            }
+            self.rootView.loginButton.setTitle(StringConstants.loggedIn, for: .normal)
+            self.rootView.seeTripsButton.isEnabled = true
+            self.rootView.seeTripsButton.alpha = 1.0
         } else {
-            DispatchQueue.main.async {
-                self.rootView.loginButton.setTitle(StringConstants.loginAs, for: .normal)
-                self.rootView.seeTripsButton.isEnabled = false
-                self.rootView.seeTripsButton.alpha = 0.5
-            }
+            self.rootView.loginButton.setTitle(StringConstants.loginAs, for: .normal)
+            self.rootView.seeTripsButton.isEnabled = false
+            self.rootView.seeTripsButton.alpha = 0.5
         }
     }
 }

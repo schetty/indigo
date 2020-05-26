@@ -17,6 +17,7 @@ extension TripModel {
         return NSFetchRequest<TripModel>(entityName: "TripModel")
     }
 
+    @NSManaged public var id: String?
     @NSManaged public var deliveryStatus: String?
     @NSManaged public var progress: String?
     @NSManaged public var scheduledDeliveryOn: String?
