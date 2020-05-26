@@ -51,7 +51,7 @@ class CoreDataHelper {
         return container
     }()
     
-    func saveContext () {
+    func saveContext() {
         let context = persistentContainer.viewContext
         if context.hasChanges {
             do {
@@ -70,22 +70,15 @@ class CoreDataHelper {
 
 /* DATA MANAGEMENT */
 extension CoreDataHelper {
-    
-    func buildDriver(token: String) {
+}
 
-        let managedContext = CoreDataHelper.sharedInstance.persistentContainer.viewContext
-        let entity = NSEntityDescription.entity(forEntityName: "Driver",
-                                                in: managedContext)!
-  
-        let driver = NSManagedObject(entity: entity,
-                                     insertInto: managedContext)
-        
-        driver.setValue(token, forKeyPath: "token")
+extension CodingUserInfoKey {
+    static let context = CodingUserInfoKey(rawValue: "context")!
+}
 
-        do {
-            try managedContext.save()
-        } catch let error as NSError {
-            print("Could not save. \(error), \(error.userInfo)")
-        }
+extension JSONDecoder {
+    convenience init(context: NSManagedObjectContext) {
+        self.init()
+        self.userInfo[.context] = context
     }
 }

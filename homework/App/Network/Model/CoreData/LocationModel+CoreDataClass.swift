@@ -15,14 +15,14 @@ public class LocationModel: NSManagedObject, Decodable {
     enum CodingKeys: String, CodingKey {
         case phone, address, name, coordinates, loadingInstructions
     }
-
+    
     required convenience public init(from decoder: Decoder) throws {
-        guard let contextKey = CodingUserInfoKey.context,
-            let context = decoder.userInfo[contextKey] as? NSManagedObjectContext else { fatalError() }
+        let contextKey = CodingUserInfoKey.context
+        guard let context = decoder.userInfo[contextKey] as? NSManagedObjectContext else { fatalError() }
         guard let entity = NSEntityDescription.entity(forEntityName: "LocationModel", in: context) else { fatalError() }
-
+        
         self.init(entity: entity, insertInto: context)
-
+        
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.phone = try container.decode(String.self, forKey: .phone)
         self.address = try container.decode(AddressModel.self, forKey: .address)

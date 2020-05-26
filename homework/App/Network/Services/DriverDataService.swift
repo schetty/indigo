@@ -19,9 +19,8 @@ private enum Endpoint {
         }
     }
 }
-
 protocol DriverDataServiceClient {
-    func fetchDriverData(token: String, _ completionHandler: @escaping () -> () )
+    func fetchDriverData(token: String, _ completionHandler: @escaping (_ success: Bool) -> () )
 }
 
 class DriverDataService: DriverDataServiceClient {
@@ -39,7 +38,7 @@ class DriverDataService: DriverDataServiceClient {
         return data
     }
     
-    func fetchDriverData(token: String, _ completionHandler: @escaping () -> (Void) ) {
+    func fetchDriverData(token: String, _ completionHandler: @escaping (_ success: Bool) -> () ) {
         let session = URLSession.shared
         var request = URLRequest(url: Endpoint.fetchDriverData.baseURL)
         request.addValue("bearer \(token)", forHTTPHeaderField: "Authorization")
@@ -59,26 +58,21 @@ class DriverDataService: DriverDataServiceClient {
                 print("there was a data error")
                 return
             }
+
             do {
-                let decoder = JSONDecoder()
-                let response = try decoder.decode(DataJSON.self, from: data)
-                print(response)
-                
+                let context = CoreDataHelper.sharedInstance.persistentContainer.newBackgroundContext()
+                let decoder = JSONDecoder(context: context)
+                let resp = try decoder.decode(ResponseModel.self, from: data)
+                if (resp.data != nil) {
+                   print("success")
+                   try context.save()
+                }
+                completionHandler(true)
             } catch {
                 print(error)
+                completionHandler(false)
             }
         })
         task.resume()
-        completionHandler()
     }
 }
-
-extension String {
-    func convertToDictionary() -> [String: Any]? {
-        if let data = data(using: .utf8) {
-            return try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-        }
-        return nil
-    }
-}
-

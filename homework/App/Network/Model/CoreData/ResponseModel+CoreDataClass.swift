@@ -18,9 +18,11 @@ public class ResponseModel: NSManagedObject, Decodable {
     }
 
     required convenience public init(from decoder: Decoder) throws {
-        guard let contextKey = CodingUserInfoKey.context,
-            let context = decoder.userInfo[contextKey] as? NSManagedObjectContext else { fatalError() }
-        guard let entity = NSEntityDescription.entity(forEntityName: "ResponseModel", in: context) else { fatalError() }
+        let contextUserInfoKey = CodingUserInfoKey.context
+        guard let context = decoder.userInfo[contextUserInfoKey] as? NSManagedObjectContext,
+        let entity = NSEntityDescription.entity(forEntityName: "ResponseModel", in: context) else {
+            fatalError("Failed to decode")
+        }
 
         self.init(entity: entity, insertInto: context)
 

@@ -17,12 +17,14 @@ enum UserStatus {
 
 class LoginViewController: UIViewController {
     
-    let rootView = LoginView()
-    let userService: UserServiceClient
-    let driverDataService: DriverDataServiceClient
-    var status: UserStatus = .loggedOut
-    
-    private var currentToken: String?
+    struct StringConstants {
+        static let loginAs = "Login as evaluations+ios@indigoag.org"
+        static let loggedIn = "logged in :)"
+    }
+    private let rootView = LoginView()
+    private let userService: UserServiceClient
+    private let helper = CoreDataHelper.sharedInstance
+    private let driverDataService: DriverDataServiceClient
     
     init(userService: UserServiceClient = UserService(), driverDataService: DriverDataServiceClient = DriverDataService()) {
         self.userService = userService
@@ -43,19 +45,15 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         rootView.loginButton.addTarget(self, action: #selector(loginUser), for: .touchUpInside)
         rootView.seeTripsButton.addTarget(self, action: #selector(presentList), for: .touchUpInside)
-        guard hasToken() else { self.status = .loggedOut
-            return
-        }
-        self.status = .loggedIn
         adjustUIForStatus()
     }
     
     @objc func loginUser() {
-        userService.login(email: Constants.Login.username, password: Constants.Login.password, then: { (response) in
+        let email = Constants.Login.username
+        let password = Constants.Login.password
+        userService.login(email: email, password: password, then: { (response) in
             guard let token = response else { return print("error") }
-            self.currentToken = token
-            CoreDataHelper.sharedInstance.buildDriver(token: token)
-            self.status = .loggedIn
+            UserDefaults.standard.set(token, forKey: "token")
             DispatchQueue.main.async {
                 self.adjustUIForStatus()
             }
@@ -63,42 +61,40 @@ class LoginViewController: UIViewController {
     }
     
     private func hasToken() -> Bool {
-        let request: NSFetchRequest<Driver> = Driver.fetchRequest()
-        do {
-            let driver = try CoreDataHelper.sharedInstance.getContext().fetch(request)
-            if (driver.first?.token != nil) { return true }
-        } catch {
-            print("Fetch failed")
-        }
+        if (UserDefaults.standard.string(forKey: "token") != nil) { return true }
         return false
     }
     
-    
     @objc func presentList() {
-        guard let tok = currentToken else {
-            print("No token")
-            return
+        guard hasToken(), let tok = UserDefaults.standard.string(forKey: "token") else { return }
+        driverDataService.fetchDriverData(token: tok) { success in
+            if success {
+                DispatchQueue.main.async {
+                    self.presentListVC()
+                }
+            }
         }
-        driverDataService.fetchDriverData(token: tok) {
-            let list = LoadListViewController()
-            list.retrieveTripData()
-            self.present(list, animated: true, completion: nil)
-        }
+    }
+    
+    private func presentListVC() {
+        let list = TripListViewController()
+        let navigationController = UINavigationController(rootViewController: list)
+        self.present(navigationController, animated: true, completion: nil)
     }
 }
 
 extension LoginViewController {
     
     func adjustUIForStatus() {
-        if status == .loggedIn {
+        if hasToken() {
             DispatchQueue.main.async {
-                self.rootView.loginButton.setTitle("logged in :)", for: .normal)
+                self.rootView.loginButton.setTitle(StringConstants.loggedIn, for: .normal)
                 self.rootView.seeTripsButton.isEnabled = true
                 self.rootView.seeTripsButton.alpha = 1.0
             }
         } else {
             DispatchQueue.main.async {
-                self.rootView.loginButton.setTitle("Login as evaluations+ios@indigoag.org", for: .normal)
+                self.rootView.loginButton.setTitle(StringConstants.loginAs, for: .normal)
                 self.rootView.seeTripsButton.isEnabled = false
                 self.rootView.seeTripsButton.alpha = 0.5
             }

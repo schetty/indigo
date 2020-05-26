@@ -8,12 +8,22 @@
 
 import Foundation
 import XCTest
+import homework
+import Auth0
 
-class TripResponseTests: XCTestCase {
+class UserServiceTests: XCTestCase {
+    
+    var loginVC = LoginViewController!
+    var userServiceClient: UserServiceClient!
+    var driverDataServiceClient: DriverDataServiceClient!
     
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        loginVC = LoginViewController(userServiceClient: UserService(), driverDataServiceClient: driverDataService())
     }
-
+    
+    func testUserLoginFail() {
+        let email = "aaa@fnf.hu"
+        let password = "fodkf"
+    }
 
 }

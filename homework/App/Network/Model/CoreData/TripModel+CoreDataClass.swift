@@ -15,14 +15,14 @@ public class TripModel: NSManagedObject, Decodable {
     enum CodingKeys: String, CodingKey {
         case deliveryStatus, progress, scheduledDeliveryOn, truckingOrder
     }
-
+    
     required convenience public init(from decoder: Decoder) throws {
-        guard let contextKey = CodingUserInfoKey.context,
-            let context = decoder.userInfo[contextKey] as? NSManagedObjectContext else { fatalError() }
+        let contextKey = CodingUserInfoKey.context
+        guard let context = decoder.userInfo[contextKey] as? NSManagedObjectContext else { fatalError() }
         guard let entity = NSEntityDescription.entity(forEntityName: "TripModel", in: context) else { fatalError() }
-
+        
         self.init(entity: entity, insertInto: context)
-
+        
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.deliveryStatus = try container.decode(String.self, forKey: .deliveryStatus)
         self.progress = try container.decode(String.self, forKey: .progress)

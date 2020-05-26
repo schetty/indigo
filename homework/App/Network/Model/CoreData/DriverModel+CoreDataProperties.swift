@@ -16,8 +16,8 @@ extension DriverModel {
     @nonobjc public class func fetchRequest() -> NSFetchRequest<DriverModel> {
         return NSFetchRequest<DriverModel>(entityName: "DriverModel")
     }
-
+    
+    @NSManaged public var token: String?
     @NSManaged public var loads: LoadModel?
     @NSManaged public var ofDataModel: DataModel?
-
 }

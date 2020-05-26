@@ -15,12 +15,12 @@ public class DataModel: NSManagedObject, Decodable {
     enum CodingKeys: String, CodingKey {
         case driver
     }
-
+    
     required convenience public init(from decoder: Decoder) throws {
-        guard let contextKey = CodingUserInfoKey.context,
-            let context = decoder.userInfo[contextKey] as? NSManagedObjectContext else { fatalError() }
+        let contextKey = CodingUserInfoKey.context
+        guard let context = decoder.userInfo[contextKey] as? NSManagedObjectContext else { fatalError() }
         guard let entity = NSEntityDescription.entity(forEntityName: "DataModel", in: context) else { fatalError() }
-
+        
         self.init(entity: entity, insertInto: context)
         
         let container = try decoder.container(keyedBy: CodingKeys.self)

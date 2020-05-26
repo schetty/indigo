@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import CoreData
 
-class LoadListViewController: UITableViewController {
+class TripListViewController: UITableViewController {
     
     let service: DriverDataServiceClient
     var tripsData: [TripModel] = []
@@ -26,6 +26,7 @@ class LoadListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        addBarButtons()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,7 +34,18 @@ class LoadListViewController: UITableViewController {
         tableView.reloadData()
     }
     
-    func refreshToken() {
+    private func addBarButtons() {
+        let sort = UIBarButtonItem(title: "Sort", style: .plain, target: self, action: #selector(sortByID))
+        let refresh = UIBarButtonItem(title: "Refresh", style: .plain, target: self, action: #selector(refreshData))
+        self.navigationItem.rightBarButtonItems = [sort, refresh]
+    }
+    
+    @objc private func sortByID() {
+        tableView.reloadData()
+    }
+    
+    @objc private func refreshData() {
+        tableView.reloadData()
     }
     
     func retrieveTripData() {
@@ -49,7 +61,7 @@ class LoadListViewController: UITableViewController {
     }
 }
 
-extension LoadListViewController {
+extension TripListViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tripsData.count
@@ -65,4 +77,5 @@ extension LoadListViewController {
         cell.textLabel?.text = progress
         return cell
     }
+    
 }
