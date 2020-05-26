@@ -34,7 +34,7 @@
 		39BFACA7246F35A70086807D /* homeworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BFACA6246F35A70086807D /* homeworkTests.swift */; };
 		39BFACAE246F35B00086807D /* TripResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BFAC98246F1C040086807D /* TripResponseTests.swift */; };
 		39FFF1B9247C9C7F00E36D5A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FFF1B8247C9C7F00E36D5A /* MapViewController.swift */; };
-		39FFF1BB247C9C9A00E36D5A /* MapView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39FFF1BA247C9C9A00E36D5A /* MapView.storyboard */; };
+		39FFF1BB247C9C9A00E36D5A /* MapSB.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39FFF1BA247C9C9A00E36D5A /* MapSB.storyboard */; };
 		39FFF1BD247CAB8800E36D5A /* TripListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FFF1BC247CAB8700E36D5A /* TripListViewController.swift */; };
 		40119F21245B7C0500D97CB3 /* request_body.json in Resources */ = {isa = PBXBuildFile; fileRef = 40119F20245B7C0500D97CB3 /* request_body.json */; };
 		66AB47D8243D1570000508FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AB47D7243D1570000508FB /* AppDelegate.swift */; };
@@ -89,7 +89,7 @@
 		39BFACA6246F35A70086807D /* homeworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homeworkTests.swift; sourceTree = "<group>"; };
 		39BFACA8246F35A70086807D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		39FFF1B8247C9C7F00E36D5A /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		39FFF1BA247C9C9A00E36D5A /* MapView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MapView.storyboard; sourceTree = "<group>"; };
+		39FFF1BA247C9C9A00E36D5A /* MapSB.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MapSB.storyboard; sourceTree = "<group>"; };
 		39FFF1BC247CAB8700E36D5A /* TripListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripListViewController.swift; sourceTree = "<group>"; };
 		40119F20245B7C0500D97CB3 /* request_body.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = request_body.json; sourceTree = "<group>"; };
 		66AB47D4243D1570000508FB /* homework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = homework.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -182,7 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				39BFA895246EF75F0086807D /* LoginView.swift */,
-				39FFF1BA247C9C9A00E36D5A /* MapView.storyboard */,
+				39FFF1BA247C9C9A00E36D5A /* MapSB.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -408,7 +408,7 @@
 			files = (
 				66AB47E4243D1572000508FB /* LaunchScreen.storyboard in Resources */,
 				66AB47E1243D1572000508FB /* Assets.xcassets in Resources */,
-				39FFF1BB247C9C9A00E36D5A /* MapView.storyboard in Resources */,
+				39FFF1BB247C9C9A00E36D5A /* MapSB.storyboard in Resources */,
 				40119F21245B7C0500D97CB3 /* request_body.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

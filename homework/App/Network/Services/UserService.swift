@@ -14,6 +14,10 @@ protocol UserServiceClient {
     func token(then completion: @escaping (String?) -> Void)
 }
 
+extension UserServiceClient {
+    func login(email: String, password: String, then completion: @escaping (String?) -> Void) {}
+}
+
 class UserService: UserServiceClient {
     
     var tokenSet: Bool = false

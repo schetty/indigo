@@ -79,7 +79,7 @@ extension TripListViewController {
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView()
         view.backgroundColor = UIColor(red: 0.83, green: 0.77, blue: 0.98, alpha: 1.00)
-        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 380, height: 60))
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 400, height: 50))
         label.text = "Tap the cell to view distance from delivery location."
         label.adjustsFontSizeToFitWidth = true
         label.textColor = .black
@@ -112,8 +112,10 @@ extension TripListViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let mapViewController = MapViewController()
-        mapViewController.tripTruckingOrder = self.tripsData[indexPath.row].truckingOrder
-        self.navigationController?.present(MapViewController(), animated: true, completion: nil)
+        let storyboard = UIStoryboard.init(name: "MapSB", bundle: Bundle.main)
+        if let mapVC = storyboard.instantiateViewController(withIdentifier: "mapVC") as? MapViewController {
+            mapVC.tripTruckingOrder = self.tripsData[indexPath.row].truckingOrder
+            navigationController?.pushViewController(mapVC, animated: true)
+        }
     }
 }

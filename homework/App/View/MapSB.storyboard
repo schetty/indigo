@@ -10,7 +10,7 @@
         <!--Map View Controller-->
         <scene sceneID="Yh9-4V-Xt6">
             <objects>
-                <viewController id="UHA-kl-oOA" customClass="MapViewController" customModule="homework" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mapVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="UHA-kl-oOA" customClass="MapViewController" customModule="homework" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yFu-b2-MMU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -28,13 +28,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PWM-MT-IfX"/>
                     </view>
+                    <navigationItem key="navigationItem" id="75F-p2-r2W"/>
                     <connections>
                         <outlet property="mapView" destination="PLU-T9-4Ig" id="W5F-hQ-oNA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eLt-ao-GTy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-210" y="1"/>
+            <point key="canvasLocation" x="700" y="0.6696428571428571"/>
         </scene>
     </scenes>
 </document>
