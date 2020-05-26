@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19E287" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="AddressModel" representedClassName="AddressModel" syncable="YES">
+        <attribute name="city" optional="YES" attributeType="String"/>
+        <attribute name="country" optional="YES" attributeType="String"/>
+        <attribute name="postalCode" optional="YES" attributeType="String"/>
+        <attribute name="state" optional="YES" attributeType="String"/>
+        <attribute name="street" optional="YES" attributeType="String"/>
+        <relationship name="ofLocation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LocationModel" inverseName="address" inverseEntity="LocationModel"/>
+    </entity>
+    <entity name="CoordinatesModel" representedClassName="CoordinatesModel" syncable="YES">
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="ofLocation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LocationModel" inverseName="coordinates" inverseEntity="LocationModel"/>
+    </entity>
+    <entity name="DataModel" representedClassName="DataModel" syncable="YES">
+        <relationship name="driver" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="DriverModel" inverseName="ofDataModel" inverseEntity="DriverModel"/>
+        <relationship name="ofResponseModel" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ResponseModel" inverseName="data" inverseEntity="ResponseModel"/>
+    </entity>
+    <entity name="DriverModel" representedClassName="DriverModel" syncable="YES">
+        <relationship name="loads" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="LoadModel" inverseName="ofDriverModel" inverseEntity="LoadModel"/>
+        <relationship name="ofDataModel" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DataModel" inverseName="driver" inverseEntity="DataModel"/>
+    </entity>
+    <entity name="LoadModel" representedClassName="LoadModel" syncable="YES">
+        <relationship name="ofDriverModel" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DriverModel" inverseName="loads" inverseEntity="DriverModel"/>
+        <relationship name="trips" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TripModel" inverseName="ofLoadModel" inverseEntity="TripModel"/>
+    </entity>
+    <entity name="LocationModel" representedClassName="LocationModel" syncable="YES">
+        <attribute name="loadingInstructions" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="phone" optional="YES" attributeType="String"/>
+        <relationship name="address" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AddressModel" inverseName="ofLocation" inverseEntity="AddressModel"/>
+        <relationship name="coordinates" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CoordinatesModel" inverseName="ofLocation" inverseEntity="CoordinatesModel"/>
+        <relationship name="ofTruckingOrderModelFrom" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TruckingOrderModel" inverseName="locationFrom" inverseEntity="TruckingOrderModel"/>
+        <relationship name="ofTruckingOrderModelTo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TruckingOrderModel" inverseName="locationTo" inverseEntity="TruckingOrderModel"/>
+    </entity>
+    <entity name="ResponseModel" representedClassName="ResponseModel" syncable="YES">
+        <relationship name="data" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="DataModel" inverseName="ofResponseModel" inverseEntity="DataModel"/>
+    </entity>
+    <entity name="TripModel" representedClassName="TripModel" syncable="YES">
+        <attribute name="deliveryStatus" optional="YES" attributeType="String"/>
+        <attribute name="progress" optional="YES" attributeType="String"/>
+        <attribute name="scheduledDeliveryOn" optional="YES" attributeType="String"/>
+        <relationship name="ofLoadModel" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LoadModel" inverseName="trips" inverseEntity="LoadModel"/>
+        <relationship name="truckingOrder" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="TruckingOrderModel" inverseName="ofTripModel" inverseEntity="TruckingOrderModel"/>
+    </entity>
+    <entity name="TruckingOrderModel" representedClassName="TruckingOrderModel" syncable="YES">
+        <attribute name="orderType" optional="YES" attributeType="String"/>
+        <attribute name="tripDistanceMiles" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="locationFrom" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="LocationModel" inverseName="ofTruckingOrderModelFrom" inverseEntity="LocationModel"/>
+        <relationship name="locationTo" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="LocationModel" inverseName="ofTruckingOrderModelTo" inverseEntity="LocationModel"/>
+        <relationship name="ofTripModel" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TripModel" inverseName="truckingOrder" inverseEntity="TripModel"/>
+    </entity>
+    <elements>
+        <element name="AddressModel" positionX="-667.21875" positionY="536.68359375" width="128" height="133"/>
+        <element name="CoordinatesModel" positionX="-850.01171875" positionY="540.96875" width="128" height="88"/>
+        <element name="DataModel" positionX="-452.48828125" positionY="137.34375" width="128" height="73"/>
+        <element name="DriverModel" positionX="-250.21875" positionY="131.58984375" width="128" height="73"/>
+        <element name="LoadModel" positionX="-244.1875" positionY="258.609375" width="128" height="73"/>
+        <element name="LocationModel" positionX="-769.23828125" positionY="346.88671875" width="128" height="148"/>
+        <element name="ResponseModel" positionX="-628.6171875" positionY="134.48828125" width="128" height="58"/>
+        <element name="TripModel" positionX="-253.296875" positionY="415.17578125" width="128" height="118"/>
+        <element name="TruckingOrderModel" positionX="-483.3125" positionY="396.078125" width="128" height="118"/>
+    </elements>
+</model>

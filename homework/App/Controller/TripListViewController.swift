@@ -13,8 +13,7 @@ import CoreData
 class LoadListViewController: UITableViewController {
     
     let service: DriverDataServiceClient
-    
-    var tripsData: [Trip] = []
+    var tripsData: [TripModel] = []
     
     init(service: DriverDataServiceClient = DriverDataService()) {
         self.service = service
@@ -27,21 +26,25 @@ class LoadListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .magenta
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        retrieveTripData()
+        tableView.reloadData()
     }
     
     func refreshToken() {
     }
     
     func retrieveTripData() {
-        let request: NSFetchRequest<Trip> = Trip.fetchRequest()
-        let sort = NSSortDescriptor(key: "id", ascending: false)
-        request.resultType = .managedObjectResultType
+        let context = CoreDataHelper.sharedInstance.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "TripModel")
         do {
-            self.tripsData = try CoreDataHelper.sharedInstance.getContext().fetch(request)
-            tableView.reloadData()
-        } catch {
-            print("Fetch failed")
+//            let resp = try context.fetch(fetchRequest)
+            let response = TripModel(context: context)
+            tripsData.append(response)
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
         }
     }
 }
@@ -54,12 +57,12 @@ extension LoadListViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        let load = tripsData[indexPath.row]
-        guard let id = tripsData[indexPath.row].id else {
+        let trip = tripsData[indexPath.row]
+        guard let progress = trip.progress else {
             cell.textLabel?.text = "No trip data available"
             return cell
         }
-        cell.textLabel?.text = id
+        cell.textLabel?.text = progress
         return cell
     }
 }
