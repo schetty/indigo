@@ -55,16 +55,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "3C1E28F2-CDC9-4334-8B08-3F1D84992C5E"
+            uuid = "36220F3E-8A02-4A2A-A384-5D02A71DCEB7"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "homework/App/Controller/LoginViewController.swift"
+            filePath = "homework/App/Network/Helpers/CoreDataHelper.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "loginUser()"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "saveContext()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9201F4FE-7116-44E7-B9E1-FD532013D5A3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "homework/App/Network/Helpers/CoreDataHelper.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "saveContext()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

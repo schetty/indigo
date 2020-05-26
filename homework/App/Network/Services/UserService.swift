@@ -11,7 +11,7 @@ import Auth0
 import UIKit
 
 protocol UserServiceClient {
-    func login(email: String, password: String, then completion: @escaping (String?) -> Void)
+    func token(then completion: @escaping (String?) -> Void)
 }
 
 class UserService: UserServiceClient {

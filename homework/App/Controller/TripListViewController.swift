@@ -12,11 +12,13 @@ import CoreData
 
 class TripListViewController: UITableViewController {
     
-    let service: DriverDataServiceClient
+    let driverDataService: DriverDataServiceClient
+    let userService: UserServiceClient
     var tripsData: [TripModel] = []
     
-    init(service: DriverDataServiceClient = DriverDataService()) {
-        self.service = service
+    init(userService: UserServiceClient = UserService(), driverDataService: DriverDataServiceClient = DriverDataService()) {
+        self.userService = userService
+        self.driverDataService = driverDataService
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -45,14 +47,20 @@ class TripListViewController: UITableViewController {
     }
     
     @objc private func refreshData() {
-        tableView.reloadData()
+        userService.token { (newToken) in
+            guard let t = newToken else {
+                print("No new token")
+                return
+            }
+            self.driverDataService.setTokenToUserDefaults(token: t)
+        }
     }
     
     func retrieveTripData() {
         let context = CoreDataHelper.sharedInstance.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "TripModel")
         do {
-//            let resp = try context.fetch(fetchRequest)
+            //            let resp = try context.fetch(fetchRequest)
             let response = TripModel(context: context)
             tripsData.append(response)
         } catch let error as NSError {

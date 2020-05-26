@@ -23,7 +23,21 @@ protocol DriverDataServiceClient {
     func fetchDriverData(token: String, _ completionHandler: @escaping (_ success: Bool) -> () )
 }
 
+extension DriverDataServiceClient {
+    func setTokenToUserDefaults(token: String) {}
+    func getToken() -> String? { return nil }
+}
+
 class DriverDataService: DriverDataServiceClient {
+    
+    func setTokenToUserDefaults(token: String) {
+        UserDefaults.standard.set(token, forKey: "token")
+    }
+    
+    func getToken() -> String? {
+        guard let t = UserDefaults.standard.string(forKey: "token") else { return nil }
+        return t
+    }
     
     private var mockContentData: Data? {
         var data: Data? = nil

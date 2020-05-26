@@ -43,30 +43,28 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        rootView.loginButton.addTarget(self, action: #selector(loginUser), for: .touchUpInside)
+        rootView.loginButton.addTarget(self, action: #selector(getToken), for: .touchUpInside)
         rootView.seeTripsButton.addTarget(self, action: #selector(presentList), for: .touchUpInside)
         adjustUIForStatus()
     }
     
-    @objc func loginUser() {
-        let email = Constants.Login.username
-        let password = Constants.Login.password
-        userService.login(email: email, password: password, then: { (response) in
-            guard let token = response else { return print("error") }
-            UserDefaults.standard.set(token, forKey: "token")
+    @objc func getToken() {
+        userService.token { (token) in
+            guard let t = token else { return print("no token") }
+            self.driverDataService.setTokenToUserDefaults(token: t)
             DispatchQueue.main.async {
                 self.adjustUIForStatus()
             }
-        })
+        }
     }
     
     private func hasToken() -> Bool {
-        if (UserDefaults.standard.string(forKey: "token") != nil) { return true }
+        if (driverDataService.getToken() != nil) { return true }
         return false
     }
     
     @objc func presentList() {
-        guard hasToken(), let tok = UserDefaults.standard.string(forKey: "token") else { return }
+        guard hasToken(), let tok = driverDataService.getToken() else { return }
         driverDataService.fetchDriverData(token: tok) { success in
             if success {
                 DispatchQueue.main.async {
